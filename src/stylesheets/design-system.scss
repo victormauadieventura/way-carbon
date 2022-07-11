@@ -1,0 +1,117 @@
+// Colors System
+
+$primary-color: #03A9F4;
+$secondary-color: #FF9B52;
+$success-color: #04Cf00;
+$warning-color: #F1FF00;
+$danger-color: #FF4242;
+$info-color: #03A9F4;
+
+$white-color: #FFFFFF;
+$black-color: #000000;
+
+$grey-scale-1-color: #8A8A8A;
+$grey-scale-1-color: #939393;
+
+$primary-darken-color-min: darken($primary-color, 10%);
+$primary-darken-color-mid: darken($primary-color, 15%);
+$primary-darken-color-max: darken($primary-color, 20%);
+
+$primary-lighten-color-min: lighten($primary-color, 10%);
+$primary-lighten-color-mid: lighten($primary-color, 15%);
+$primary-lighten-color-max: lighten($primary-color, 20%);
+
+$secondary-darken-color-min: darken($secondary-color, 10%);
+$secondary-darken-color-mid: darken($secondary-color, 15%);
+$secondary-darken-color-max: darken($secondary-color, 20%);
+
+$secondary-lighten-color-min: lighten($secondary-color, 10%);
+$secondary-lighten-color-mid: lighten($secondary-color, 15%);
+$secondary-lighten-color-max: lighten($secondary-color, 20%);
+
+$success-darken-color-min: darken($success-color, 10%);
+$success-darken-color-mid: darken($success-color, 15%);
+$success-darken-color-max: darken($success-color, 20%);
+
+$success-lighten-color-min: lighten($success-color, 10%);
+$success-lighten-color-mid: lighten($success-color, 15%);
+$success-lighten-color-max: lighten($success-color, 20%);
+
+$warning-darken-color-min: darken($warning-color, 10%);
+$warning-darken-color-mid: darken($warning-color, 15%);
+$warning-darken-color-max: darken($warning-color, 20%);
+
+$warning-lighten-color-min: lighten($warning-color, 10%);
+$warning-lighten-color-mid: lighten($warning-color, 15%);
+$warning-lighten-color-max: lighten($warning-color, 20%);
+
+$danger-darken-color-min: darken($danger-color, 10%);
+$danger-darken-color-mid: darken($danger-color, 15%);
+$danger-darken-color-max: darken($danger-color, 20%);
+
+$danger-lighten-color-min: lighten($danger-color, 10%);
+$danger-lighten-color-mid: lighten($danger-color, 15%);
+$danger-lighten-color-max: lighten($danger-color, 20%);
+
+$info-darken-color-min: darken($info-color, 10%);
+$info-darken-color-mid: darken($info-color, 15%);
+$info-darken-color-max: darken($info-color, 20%);
+
+$info-lighten-color-min: lighten($info-color, 10%);
+$info-lighten-color-mid: lighten($info-color, 15%);
+$info-lighten-color-max: lighten($info-color, 20%);
+
+// Font Size
+
+$font-size-min: 16px;
+$font-size-mid: 20px;
+$font-size-max: 24px;
+
+// Title Size
+
+$h1-size: 40px;
+$h2-size: 30px;
+$h3-size: 24px;
+$h4-size: 16px;
+$h5-size: 14px;
+$h6-size: 12px;
+
+// Border Radius
+
+$border-radius-min: 4px;
+$border-radius-mid: 8px;
+$border-radius-max: 12px;
+
+$border-radius-round: 48px;
+
+// System Padding
+
+$system-padding-min: 8px;
+$system-padding-mid: 16px;
+$system-padding-max: 24px;
+
+$system-padding-rl-min: 0 8px;
+$system-padding-rl-mid: 0 16px;
+$system-padding-rl-max: 0 24px;
+
+$system-padding-tb-min: 8px 0;
+$system-padding-tb-mid: 16px 0;
+$system-padding-tb-max: 24px 0;
+
+// Box Shadow
+
+$box-shadow-min: 0px 0px 10px 5px rgba($black-color, 0.15);
+$box-shadow-mid: 0px 0px 10px 5px rgba($black-color, 0.30);
+$box-shadow-max: 0px 0px 10px 5px rgba($black-color, 0.45);
+
+// Buttom Size
+
+$button-size-min: 32px;
+$button-size-mid: 40px;
+$button-size-max: 48px;
+
+// Buttom Padding
+
+$button-padding-min: 0 24px;
+$button-padding-mid: 0 28px;
+$button-padding-max: 0 32px;
