@@ -17,7 +17,6 @@ export class PostsService {
  }
 
   getAllPosts(): Observable<any> {
-    console.log(this.apiPathPosts);
     return this.http.get<any>(this.apiPathPosts);
   }
 }

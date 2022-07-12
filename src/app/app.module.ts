@@ -5,17 +5,21 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './pages/shared.module';
 import { HeaderComponent } from './core/components/header/header.component';
 import { CoreModule } from './shared/services/core.module';
+import { CommonModule } from '@angular/common';
+import { PostsComponent } from './pages/posts/posts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    PostsComponent
   ],
   imports: [
     CoreModule,
+    CommonModule,
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
   ],
   providers: [],
   bootstrap: [

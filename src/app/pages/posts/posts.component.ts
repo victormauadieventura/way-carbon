@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from 'src/app/shared/models/post';
 import { PostsService } from 'src/app/shared/services/posts.sevices';
 
 @Component({
@@ -7,6 +8,8 @@ import { PostsService } from 'src/app/shared/services/posts.sevices';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit {
+
+  posts: Post[] = [];
 
   constructor(
     private postsService: PostsService,
@@ -19,9 +22,9 @@ export class PostsComponent implements OnInit {
   getAllModelsEquipaments(): void {
     this.postsService.getAllPosts()
       .subscribe((response: any) => {
-        console.log(response);
+        this.posts = response;
+        console.log(this.posts);
         
       });
   }
-
 }
