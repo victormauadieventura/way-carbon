@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostsComponent } from './posts/posts.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { PostComponent } from './posts/post/post.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,9 @@ import { BrowserModule } from '@angular/platform-browser';
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [],
+  declarations: [
+    PostComponent
+  ],
   providers: [],
 })
 export class SharedModule { }

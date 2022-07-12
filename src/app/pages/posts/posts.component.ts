@@ -16,10 +16,10 @@ export class PostsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getAllModelsEquipaments();
+    this.getAllPosts();
   }
 
-  getAllModelsEquipaments(): void {
+  getAllPosts(): void {
     this.postsService.getAllPosts()
       .subscribe((response: any) => {
         this.posts = response;

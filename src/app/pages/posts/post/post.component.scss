@@ -1,0 +1,11 @@
+@import '../../../../stylesheets/design-system';
+
+.post-background {
+  display: block;
+  width: 100%;
+  height: 493px;
+  margin-bottom: $system-padding-mid;
+  img {
+    max-width: 100%;
+  }
+}

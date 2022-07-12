@@ -7,6 +7,38 @@
   font-family: 'Roboto';
 }
 
-.container {
-  width: 800px;
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  color: $black-color;
 }
+
+h1 {
+  font-size: $h1-size;
+  margin: $system-padding-max 0;
+}
+h2 {
+  font-size: $h2-size;
+  margin: $system-padding-max 0;
+}
+h3 {
+  font-size: $h3-size;
+  margin: $system-padding-mid 0;
+}
+h4 {
+  font-size: $h4-size;
+  margin: $system-padding-mid 0;
+}
+h5 {
+  font-size: $h5-size;
+  margin: $system-padding-min 0;
+}
+h6 {
+  font-size: $h6-size;
+  margin: $system-padding-min 0;
+}
+
+.container {
+  width: 850px;
+}
+

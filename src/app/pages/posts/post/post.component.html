@@ -1,0 +1,9 @@
+<div class="post-background">
+  <img [src]="'assets/' + (post.background ? post.background : 'background.jpg')" alt="">
+</div>
+<div class="container">
+  <h1>{{ post.title }}</h1>
+  <h3>{{ post.subtitle }}</h3>
+  <div class="post-author"></div>
+  <p [innerHTML]="post.content"></p>
+</div>
