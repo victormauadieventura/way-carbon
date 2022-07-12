@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   imports: [],
@@ -10,7 +11,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [],
+  declarations: [
+    PostsComponent
+  ],
   providers: [],
 })
 export class SharedModule { }

@@ -3,11 +3,11 @@ import { BaseEnvironmentIMPL } from "./base-environment-impl";
 
 export const environment: BaseEnvironment = {
   ...BaseEnvironmentIMPL,
-  production: true,
+  production: false,
   app: {
-    title: 'SGIS',
-    version: `${BaseEnvironmentIMPL.app.version}`,
-    env: 'production'
+    title: 'SGIS - Teste',
+    version: `Teste - ${BaseEnvironmentIMPL.app.version}`,
+    env: 'test',
   },
   services: {
     authentication: {

@@ -1,17 +1,9 @@
 import { BaseEnvironment } from "src/app/shared/models/base-environments";
 import { BaseEnvironmentIMPL } from "./base-environment-impl";
+import { environment as environmentDev } from './environment.develop';
 
 export const environment: BaseEnvironment = {
   ...BaseEnvironmentIMPL,
+  ...environmentDev,
   production: true,
-  app: {
-    title: 'SGIS',
-    version: `${BaseEnvironmentIMPL.app.version}`,
-    env: 'production'
-  },
-  services: {
-    authentication: {
-      path: 'http://localhost:3000/',
-    },
-  },
 };
