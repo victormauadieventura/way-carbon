@@ -1,0 +1,26 @@
+<button
+  [type]="type"
+  [id]="id"
+  [title]="title"
+  [class]="class"
+  [class.text-uppercase]="uppercase"
+  [class.disabled]="disabled"
+  [class.fw-bold]="bold"
+  [style]="style"
+  (click)="buttonSendFunction($event, disabled)"
+>
+  <ng-container *ngIf="label && !icon && format.name !== 'square' && format.name !== 'round'">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden"></span>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="label && icon && format.name !== 'square' && format.name !== 'round'">
+    <i class="material-icons-outlined">{{ icon }}</i>{{ label }}
+  </ng-container>
+  <ng-container *ngIf="icon && !label && (format.name !== 'square' && format.name !== 'round')">
+    <i class="material-icons-outlined">{{ icon }}</i>
+  </ng-container>
+  <ng-container *ngIf="icon && !label && (format.name === 'square' || format.name === 'round')">
+    <i class="material-icons-outlined">{{ icon }}</i>
+  </ng-container>
+</button>

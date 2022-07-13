@@ -2,8 +2,24 @@
   <img [src]="'assets/' + (post.background ? post.background : 'background.jpg')" alt="">
 </div>
 <div class="container">
+  <app-button-dynamic
+    [id]="'confirm-button'"
+    [label]="'Voltar'"
+    [icon]="'arrow_back'"
+    [format]="{ name: 'rounder' }"
+    [category]="{ name: 'primary' }"
+    [size]="{ name: 'min' }"
+    [action]="'voltar'"
+    (buttonFunction)="buttonFunction($event)"
+  ></app-button-dynamic>
   <h1>{{ post.title }}</h1>
   <h3>{{ post.subtitle }}</h3>
-  <div class="post-author"></div>
-  <p [innerHTML]="post.content"></p>
+  <div class="post-author">
+    <app-post-author
+      [username]="author.username"
+      [avatar]="author.avatar"
+      [data]="post.data"
+    ></app-post-author>
+  </div>
+  <div class="post-text" [innerHTML]="post.content"></div>
 </div>

@@ -3,6 +3,8 @@ export interface Post {
   title?: string;
   subtitle?: string;
   content?: string;
+  author?: number,
   comment?: number;
   background?: string;
+  data?: string;
 }

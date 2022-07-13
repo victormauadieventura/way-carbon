@@ -1,0 +1,406 @@
+@import "../../../../stylesheets/design-system";
+
+button {
+  &.primary {
+    &.pattern,
+    &.rounder,
+    &.angle,
+    &.square,
+    &.round {
+      color: $white-color;
+      background-color: $primary-color;
+      &:hover {
+        background-color: $primary-lighten-color-mid;
+      }
+    }
+    &.pattern-ghost,
+    &.rounder-ghost,
+    &.angle-ghost {
+      color: $primary-color;
+      border-color: $primary-color;
+      &:hover {
+        color: $white-color;
+        background-color: $primary-color;
+      }
+    }
+    &.text {
+      color: $primary-color;
+      &:hover {
+        color: $primary-lighten-color-mid;
+      }
+    }
+    &.icon {
+      color: $primary-color;
+      &:hover {
+        color: $primary-lighten-color-mid;
+      }
+      i {
+        padding: 0;
+      }
+    }
+  }
+  &.secondary {
+    &.pattern,
+    &.rounder,
+    &.angle,
+    &.square,
+    &.round {
+      color: $white-color;
+      background-color: $secondary-color;
+      &:hover {
+        background-color: $secondary-lighten-color-mid;
+      }
+    }
+    &.pattern-ghost,
+    &.rounder-ghost,
+    &.angle-ghost {
+      color: $secondary-color;
+      border-color: $secondary-color;
+      &:hover {
+        color: $white-color;
+        background-color: $secondary-color;
+      }
+    }
+    &.text {
+      color: $secondary-color;
+      &:hover {
+        color: $secondary-lighten-color-mid;
+      }
+    }
+    &.icon {
+      color: $secondary-color;
+      &:hover {
+        color: $secondary-lighten-color-mid;
+      }
+      i {
+        padding: 0;
+      }
+    }
+  }
+  &.success {
+    &.pattern,
+    &.rounder,
+    &.angle,
+    &.square,
+    &.round {
+      color: $white-color;
+      background-color: $success-color;
+      &:hover {
+        background-color: $success-lighten-color-mid;
+      }
+    }
+    &.pattern-ghost,
+    &.rounder-ghost,
+    &.angle-ghost {
+      color: $success-color;
+      border-color: $success-color;
+      &:hover {
+        color: $white-color;
+        background-color: $success-color;
+      }
+    }
+    &.text {
+      color: $success-color;
+      &:hover {
+        color: $success-lighten-color-mid;
+      }
+    }
+    &.icon {
+      color: $success-color;
+      &:hover {
+        color: $success-lighten-color-mid;
+      }
+      i {
+        padding: 0;
+      }
+    }
+  }
+  &.warning {
+    &.pattern,
+    &.rounder,
+    &.angle,
+    &.square,
+    &.round {
+      color: $white-color;
+      background-color: $warning-color;
+      &:hover {
+        background-color: $warning-lighten-color-mid;
+      }
+    }
+    &.pattern-ghost,
+    &.rounder-ghost,
+    &.angle-ghost {
+      color: $warning-color;
+      border-color: $warning-color;
+      &:hover {
+        color: $white-color;
+        background-color: $warning-color;
+      }
+    }
+    &.text {
+      color: $warning-color;
+      &:hover {
+        color: $warning-lighten-color-mid;
+      }
+    }
+    &.icon {
+      color: $warning-color;
+      &:hover {
+        color: $warning-lighten-color-mid;
+      }
+      i {
+        padding: 0;
+      }
+    }
+  }
+  &.danger {
+    &.pattern,
+    &.rounder,
+    &.angle,
+    &.square,
+    &.round {
+      color: $white-color;
+      background-color: $danger-color;
+      &:hover {
+        background-color: $danger-lighten-color-mid;
+      }
+    }
+    &.pattern-ghost,
+    &.rounder-ghost,
+    &.angle-ghost {
+      color: $danger-color;
+      border-color: $danger-color;
+      &:hover {
+        color: $white-color;
+        background-color: $danger-color;
+      }
+    }
+    &.text {
+      color: $danger-color;
+      &:hover {
+        color: $danger-lighten-color-mid;
+      }
+    }
+    &.icon {
+      color: $danger-color;
+      &:hover {
+        color: $danger-lighten-color-mid;
+      }
+      i {
+        padding: 0;
+      }
+    }
+  }
+  &.info {
+    &.pattern,
+    &.rounder,
+    &.angle,
+    &.square,
+    &.round {
+      color: $white-color;
+      background-color: $info-color;
+      &:hover {
+        background-color: $info-lighten-color-mid;
+      }
+    }
+    &.pattern-ghost,
+    &.rounder-ghost,
+    &.angle-ghost {
+      color: $info-color;
+      border-color: $info-color;
+      &:hover {
+        color: $white-color;
+        background-color: $info-color;
+      }
+    }
+    &.text {
+      color: $info-color;
+      &:hover {
+        color: $info-lighten-color-mid;
+      }
+    }
+    &.icon {
+      color: $info-color;
+      &:hover {
+        color: $info-lighten-color-mid;
+      }
+      i {
+        padding: 0;
+      }
+    }
+  }
+  &.disabled {
+    cursor: not-allowed;
+    &.pattern,
+    &.rounder,
+    &.angle,
+    &.square,
+    &.round,
+    &.pattern-ghost,
+    &.rounder-ghost,
+    &.angle-ghost,
+    &.text,
+    &.icon {
+      opacity: 0.5;
+      i {
+        padding: 0;
+      }
+    }
+  }
+  &.default {
+    &.pattern,
+    &.rounder,
+    &.angle,
+    &.square,
+    &.round {
+      color: $white-color;
+      background-color: $grey-scale-2-color;
+    }
+    &.pattern-ghost,
+    &.rounder-ghost,
+    &.angle-ghost {
+      color: $grey-scale-1-color;
+      border-color: $grey-scale-1-color;
+    }
+    &.text {
+      color: $grey-scale-1-color;
+    }
+    &.icon {
+      height: fit-content;
+      padding: 0;
+      color: $grey-scale-1-color;
+      i {
+        padding: 0;
+      }
+    }
+  }
+
+  &.pattern,
+  &.rounder,
+  &.angle,
+  &.square,
+  &.round {
+    border: none;
+  }
+
+  &.pattern,
+  &.rounder,
+  &.angle,
+  &.text {
+    i {
+      padding-right: 5px;
+    }
+  }
+
+  &.pattern-ghost,
+  &.rounder-ghost,
+  &.angle-ghost {
+    border-width: 1px;
+    border-style: solid;
+    background-color: transparent;
+    i {
+      padding-right: 5px;
+    }
+    &:hover {
+      border: none;
+    }
+  }
+
+  &.text,
+  &.icon {
+    border: none;
+    background-color: transparent;
+  }
+
+  &.max,
+  &.mid,
+  &.min {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.min {
+    font-size: $font-size-min;
+    height: $button-size-min;
+    padding: $button-padding-min;
+    &.pattern,
+    &.pattern-ghost,
+    &.round {
+      border-radius: $border-radius-round;
+    }
+    &.rounder,
+    &.rounder-ghost,
+    &.square {
+      border-radius: $border-radius-min;
+    }
+    &.angle,
+    &.angle-ghost,
+    &.text {
+      border-radius: 0;
+    }
+
+    &.square,
+    &.round {
+      width: $button-size-min;
+      padding: 0;
+    }
+  }
+  &.mid {
+    font-size: $font-size-mid;
+    height: $button-size-mid;
+    padding: $button-padding-mid;
+    &.pattern,
+    &.pattern-ghost,
+    &.round {
+      border-radius: $border-radius-round;
+    }
+    &.rounder,
+    &.rounder-ghost,
+    &.square {
+      border-radius: $border-radius-mid;
+    }
+    &.angle,
+    &.angle-ghost,
+    &.text {
+      border-radius: 0;
+    }
+
+    &.square,
+    &.round {
+      width: $button-size-mid;
+      padding: 0;
+    }
+  }
+  &.max {
+    font-size: $font-size-max;
+    height: $button-size-max;
+    padding: $button-padding-max;
+    &.pattern,
+    &.pattern-ghost,
+    &.round {
+      border-radius: $border-radius-round;
+    }
+    &.rounder,
+    &.rounder-ghost,
+    &.square {
+      border-radius: $border-radius-max;
+    }
+    &.angle,
+    &.angle-ghost,
+    &.text {
+      border-radius: 0;
+    }
+
+    &.square,
+    &.round {
+      width: $button-size-max;
+      padding: 0;
+    }
+  }
+  .spinner-border {
+    width: 14px;
+    height: 14px;
+    margin-left: $system-padding-min;
+  }
+}

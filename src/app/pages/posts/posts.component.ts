@@ -27,4 +27,9 @@ export class PostsComponent implements OnInit {
         
       });
   }
+
+  removerTags(html: any): any {
+    const data = new DOMParser().parseFromString(html, 'text/html');
+    return data.body.textContent || '';
+ }
 }

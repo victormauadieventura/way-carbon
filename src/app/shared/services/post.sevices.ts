@@ -10,15 +10,23 @@ export class PostService {
 
   private path: any;
   private readonly apiPathPosts: string = '';
+  private readonly apiPathAuthor: string = '';
 
   constructor(private http: HttpClient) {
     this.path = environment.services.authentication.path;
     this.apiPathPosts = `${this.path}posts`;
- }
+    this.apiPathAuthor = `${this.path}author`;
+  }
 
- getPosts(id: number): Observable<any> {
-  return this.http.get<any>(`${this.apiPathPosts}/${id}`,).pipe(
-    map(response => response)
-  );
-}
+  getPost(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiPathPosts}/${id}`,).pipe(
+      map(response => response)
+    );
+  }
+
+  getAuthor(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiPathAuthor}/${id}`,).pipe(
+      map(response => response)
+    );
+  }
 }
