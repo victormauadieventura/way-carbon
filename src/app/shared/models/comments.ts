@@ -3,7 +3,8 @@ export interface Comments {
   respondsTo?: {
     id: number;
   };
-  author?: number | string;
+  author?: number;
+  username?: string;
   timestamp?: string;
   content?: string;
   children?: Comments[];

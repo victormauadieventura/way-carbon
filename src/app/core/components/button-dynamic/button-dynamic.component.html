@@ -8,11 +8,15 @@
   [class.fw-bold]="bold"
   [style]="style"
   (click)="buttonSendFunction($event, disabled)"
+  (click)="buttonShowModal()"
 >
   <ng-container *ngIf="label && !icon && format.name !== 'square' && format.name !== 'round'">
-    <div class="spinner-border" role="status">
-      <span class="visually-hidden"></span>
-    </div>
+    {{ loading ? 'Carregando' : label }}
+    <ng-container *ngIf="loading" >
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden"></span>
+      </div>
+    </ng-container>
   </ng-container>
   <ng-container *ngIf="label && icon && format.name !== 'square' && format.name !== 'round'">
     <i class="material-icons-outlined">{{ icon }}</i>{{ label }}

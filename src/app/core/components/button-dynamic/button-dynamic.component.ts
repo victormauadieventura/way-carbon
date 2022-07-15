@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 import { ButtonCategory } from 'src/app/shared/models/button-category';
 import { ButtonFormat } from 'src/app/shared/models/button-format';
 import { ButtonSize } from 'src/app/shared/models/button-size';
+import { ModalContent } from 'src/app/shared/models/modal-content';
 
 @Component({
   selector: 'app-button-dynamic',
@@ -26,9 +27,11 @@ export class ButtonDynamicComponent implements OnChanges {
   @Input() style: string = '';
   @Input() class: string = '';
   @Input() disabled: boolean = false;
-
+  @Input() loading: boolean = false;
+  @Input() modalContent: ModalContent = { name: '', content: '' };
 
   @Output() buttonFunction: EventEmitter<string> = new EventEmitter<string>();
+  @Output() buttonFunctionModal: EventEmitter<ModalContent> = new EventEmitter<ModalContent>();
 
   constructor() { }
 
@@ -51,5 +54,9 @@ export class ButtonDynamicComponent implements OnChanges {
     if (event && !disabled) {
       event.toggle();
     }
+  }
+
+  buttonShowModal(): void {
+    this.buttonFunctionModal.emit(this.modalContent);
   }
 }

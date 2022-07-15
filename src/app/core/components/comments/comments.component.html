@@ -3,15 +3,48 @@
   <h2>Comentários</h2>
   <ng-container *ngFor="let comment of tree">
     <div class="comments">
-      <h4>{{ comment.author }} {{ comment.timestamp | dateComments }}</h4>
+      <div class="comment-header">
+        <h4> {{ comment.username }} {{ comment.timestamp | dateComments }} </h4>
+        <app-button-dynamic
+          [id]="'list-comments-' + comment.author"
+          [format]="{ name: 'text' }"
+          [category]="{ name: 'primary' }"
+          [size]="{ name: 'min' }"
+          [icon]="'question_answer'"
+          [modalContent]="{ name: 'modalComments', content: modalComments }"
+          (buttonFunctionModal)="selectModal($event, comment.author)"
+        ></app-button-dynamic>
+      </div>
       <p>{{ comment.content }}</p>
       <ng-container *ngFor="let comment of comment.children">
         <div class="comments">
-          <h4>{{ comment.author }} {{ comment.timestamp | dateComments }}</h4>
+          <div class="comment-header">
+            <h4> {{ comment.username }} {{ comment.timestamp | dateComments }} </h4>
+            <app-button-dynamic
+              [id]="'list-comments-' + comment.author"
+              [format]="{ name: 'text' }"
+              [category]="{ name: 'primary' }"
+              [size]="{ name: 'min' }"
+              [icon]="'question_answer'"
+              [modalContent]="{ name: 'modalComments', content: modalComments }"
+              (buttonFunctionModal)="selectModal($event, comment.author)"
+            ></app-button-dynamic>
+          </div>
           <p>{{ comment.content }}</p>
           <ng-container *ngFor="let comment of comment.children">
             <div class="comments">
-              <h4>{{ comment.author }} {{ comment.timestamp | dateComments }}</h4>
+              <div class="comment-header">
+                <h4> {{ comment.username }} {{ comment.timestamp | dateComments }} </h4>
+                <app-button-dynamic
+                  [id]="'list-comments-' + comment.author"
+                  [format]="{ name: 'text' }"
+                  [category]="{ name: 'primary' }"
+                  [size]="{ name: 'min' }"
+                  [icon]="'question_answer'"
+                  [modalContent]="{ name: 'modalComments', content: modalComments }"
+                  (buttonFunctionModal)="selectModal($event, comment.author)"
+                ></app-button-dynamic>
+              </div>
               <p>{{ comment.content }}</p>
             </div>
           </ng-container>
@@ -20,3 +53,27 @@
     </div>
   </ng-container>
 </ng-container>
+
+<ng-template #modalComments let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Posts</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <i class="material-icons-outlined">close</i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <ng-container *ngFor="let post of postsByAuthor">
+      <div class="post-content">
+        <a [href]="'post?id=' + post.id">
+          <h4>{{ post.title }}</h4>
+        </a>
+        <div class="post-text">
+          <p>
+            {{ removerTags(post.content) }}
+          </p>
+        </div>
+        <hr>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>

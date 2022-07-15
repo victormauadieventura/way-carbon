@@ -26,6 +26,10 @@ export class PostService {
     );
   }
 
+  getAllPost(): Observable<any> {
+    return this.http.get<any>(`${this.apiPathPosts}`);
+  }
+
   getAuthor(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiPathAuthor}/${id}`).pipe(
       map(response => response)
