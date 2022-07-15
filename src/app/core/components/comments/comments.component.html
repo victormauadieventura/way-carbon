@@ -1,0 +1,22 @@
+
+<ng-container *ngIf="comments.length">
+  <h2>Comentários</h2>
+  <ng-container *ngFor="let comment of tree">
+    <div class="comments">
+      <h4>{{ comment.author }} {{ comment.timestamp | dateComments }}</h4>
+      <p>{{ comment.content }}</p>
+      <ng-container *ngFor="let comment of comment.children">
+        <div class="comments">
+          <h4>{{ comment.author }} {{ comment.timestamp | dateComments }}</h4>
+          <p>{{ comment.content }}</p>
+          <ng-container *ngFor="let comment of comment.children">
+            <div class="comments">
+              <h4>{{ comment.author }} {{ comment.timestamp | dateComments }}</h4>
+              <p>{{ comment.content }}</p>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</ng-container>

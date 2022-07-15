@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Author } from 'src/app/shared/models/author';
 import { Post } from 'src/app/shared/models/post';
 import { PostService } from 'src/app/shared/services/post.sevices';
+import { Comments } from 'src/app/shared/models/comments';
 
 @Component({
   selector: 'app-post',
@@ -14,6 +15,7 @@ export class PostComponent implements OnInit {
 
   post: Post = {};
   author: Author = {};
+  comments: Comments[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -35,6 +37,9 @@ export class PostComponent implements OnInit {
         if (this.post.author) {
           this.getAuthor(this.post.author);
         }
+        if (this.post.comment) {
+          this.getComment(this.post.comment);
+        }
       });
   }
 
@@ -42,7 +47,13 @@ export class PostComponent implements OnInit {
     this.postService.getAuthor(id)
       .subscribe((response: any) => {
         this.author = response;
-        console.log(this.author);
+      });
+  }
+
+  getComment(id: number): void {
+    this.postService.getComment(id)
+      .subscribe((response: any) => {
+        this.comments = response.comments;
       });
   }
 

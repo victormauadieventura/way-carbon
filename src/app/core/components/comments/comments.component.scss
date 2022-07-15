@@ -1,0 +1,11 @@
+@import '../../../../stylesheets/design-system';
+
+.comments {
+  border-left: 3px solid $secondary-color;
+  padding-left: $system-padding-mid;
+  margin-top: $system-padding-mid;
+  h4 {
+    font-weight: 400;
+    color: $primary-color;
+  }
+}

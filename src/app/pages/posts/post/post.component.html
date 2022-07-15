@@ -6,7 +6,7 @@
     [id]="'confirm-button'"
     [label]="'Voltar'"
     [icon]="'arrow_back'"
-    [format]="{ name: 'rounder' }"
+    [format]="{ name: 'text' }"
     [category]="{ name: 'primary' }"
     [size]="{ name: 'min' }"
     [action]="'voltar'"
@@ -22,4 +22,7 @@
     ></app-post-author>
   </div>
   <div class="post-text" [innerHTML]="post.content"></div>
+    <app-comments
+      [comments]="comments"
+    ></app-comments>
 </div>
