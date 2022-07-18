@@ -3,7 +3,8 @@
 .post-background {
   display: block;
   width: 100%;
-  height: 493px;
+  height: auto;
+  max-height: 493px;
   margin-bottom: $system-padding-mid;
   overflow: hidden;
   img {
