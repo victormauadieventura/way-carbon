@@ -14,10 +14,14 @@ import { Post } from 'src/app/shared/models/post';
 export class CommentsComponent implements OnChanges {
 
   @Input() comments: Comments[] = [];
+  @Input() url: string = '';
+  @Input() title: string | undefined = '';
+  @Input() content: string | undefined = '';
 
   authors: Author[] = [];
   posts: Post[] = [];
   postsByAuthor: Post[] = [];
+  infoAuthor: Author = {};
   tree: Comments[] = [];
 
   constructor(
@@ -77,11 +81,31 @@ export class CommentsComponent implements OnChanges {
   }
 
   selectModal(modal: ModalContent, id: any): void {
-    if (modal.name === 'modalComments') {
-      this.modalService.open(modal.content, { centered: true, size: 'md' });
-      this.postsByAuthor = this.posts.filter(post => post.author === +id);
-      return;
+    switch (modal.name) {
+      case 'modalComments':
+        this.modalService.open(modal.content, { centered: true, size: 'md' });
+        this.postsByAuthor = this.posts.filter(post => post.author === +id);
+        break;
+      case 'modalAuthor':
+        this.modalService.open(modal.content, { centered: true, size: 'sm' });
+        this.infoAuthor = this.authors.filter(author => author.id === id)[0];
+        break;
     }
+  }
+
+  actionButtons(button: any): void {
+    switch (button) {
+      case 'whatsapp':
+        this.actionShare('https://api.whatsapp.com/send?text=');
+        break;
+      case 'facebook':
+        this.actionShare('https://www.facebook.com/sharer/sharer.php?u=');
+        break;
+    }
+  }
+
+  actionShare(url: string): void {
+    window.open(`${url}${this.url}`, '_blank');
   }
 
   removerTags(html: any): any {

@@ -12,7 +12,7 @@ import { ModalContent } from 'src/app/shared/models/modal-content';
 export class ButtonDynamicComponent implements OnChanges {
 
   @Input() type: string = 'button';
-  @Input() label: string | number = '';
+  @Input() label: string | number | undefined = '';
   @Input() id: string = '';
   @Input() title: string = '';
   @Input() tooltip: string = '';

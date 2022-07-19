@@ -4,7 +4,17 @@
   <ng-container *ngFor="let comment of tree">
     <div class="comments">
       <div class="comment-header">
-        <h4> {{ comment.username }} {{ comment.timestamp | dateComments }} </h4>
+        <h4>
+          <app-button-dynamic
+            [format]="{ name: 'text' }"
+            [category]="{ name: 'primary' }"
+            [size]="{ name: 'min' }"
+            [label]="comment.username"
+            [modalContent]="{ name: 'modalAuthor', content: modalAuthor }"
+            (buttonFunctionModal)="selectModal($event, comment.author)"
+          ></app-button-dynamic> 
+          {{ comment.timestamp | dateComments }}
+        </h4>
         <app-button-dynamic
           [id]="'list-comments-' + comment.author"
           [format]="{ name: 'text' }"
@@ -13,6 +23,22 @@
           [icon]="'question_answer'"
           [modalContent]="{ name: 'modalComments', content: modalComments }"
           (buttonFunctionModal)="selectModal($event, comment.author)"
+        ></app-button-dynamic>
+        <app-button-dynamic
+          [format]="{ name: 'text' }"
+          [category]="{ name: 'primary' }"
+          [size]="{ name: 'min' }"
+          [icon]="'whatsapp'"
+          [action]="'whatsapp'"
+          (buttonFunction)="actionButtons($event)"
+        ></app-button-dynamic>
+        <app-button-dynamic
+          [format]="{ name: 'text' }"
+          [category]="{ name: 'primary' }"
+          [size]="{ name: 'min' }"
+          [icon]="'share'"
+          [action]="'facebook'"
+          (buttonFunction)="actionButtons($event)"
         ></app-button-dynamic>
       </div>
       <p>{{ comment.content }}</p>
@@ -29,6 +55,22 @@
               [modalContent]="{ name: 'modalComments', content: modalComments }"
               (buttonFunctionModal)="selectModal($event, comment.author)"
             ></app-button-dynamic>
+            <app-button-dynamic
+              [format]="{ name: 'text' }"
+              [category]="{ name: 'primary' }"
+              [size]="{ name: 'min' }"
+              [icon]="'whatsapp'"
+              [action]="'whatsapp'"
+              (buttonFunction)="actionButtons($event)"
+            ></app-button-dynamic>
+            <app-button-dynamic
+              [format]="{ name: 'text' }"
+              [category]="{ name: 'primary' }"
+              [size]="{ name: 'min' }"
+              [icon]="'share'"
+              [action]="'facebook'"
+              (buttonFunction)="actionButtons($event)"
+            ></app-button-dynamic>
           </div>
           <p>{{ comment.content }}</p>
           <ng-container *ngFor="let comment of comment.children">
@@ -43,6 +85,22 @@
                   [icon]="'question_answer'"
                   [modalContent]="{ name: 'modalComments', content: modalComments }"
                   (buttonFunctionModal)="selectModal($event, comment.author)"
+                ></app-button-dynamic>
+                <app-button-dynamic
+                  [format]="{ name: 'text' }"
+                  [category]="{ name: 'primary' }"
+                  [size]="{ name: 'min' }"
+                  [icon]="'whatsapp'"
+                  [action]="'whatsapp'"
+                  (buttonFunction)="actionButtons($event)"
+                ></app-button-dynamic>
+                <app-button-dynamic
+                  [format]="{ name: 'text' }"
+                  [category]="{ name: 'primary' }"
+                  [size]="{ name: 'min' }"
+                  [icon]="'share'"
+                  [action]="'facebook'"
+                  (buttonFunction)="actionButtons($event)"
                 ></app-button-dynamic>
               </div>
               <p>{{ comment.content }}</p>
@@ -73,6 +131,27 @@
           </p>
         </div>
         <hr>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-template #modalAuthor let-modal>
+  <div class="modal-body">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <i class="material-icons-outlined">close</i>
+    </button>
+    <ng-container *ngIf="infoAuthor">
+      <div class="author-container">
+        <div class="author-avatar">
+          <img [src]="'assets/' + infoAuthor.avatar" alt="">
+        </div>
+        <h4>{{ infoAuthor.username }}</h4>
+        <div class="author-content">
+          <span>Amigos: {{ infoAuthor.friendIds?.length }}</span>
+          <span>Posts: {{ infoAuthor.posts?.length }}</span>
+          <span>Membro desde: {{ infoAuthor.memberSince | datePtBr }}</span>
+        </div>
       </div>
     </ng-container>
   </div>

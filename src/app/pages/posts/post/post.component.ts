@@ -17,6 +17,8 @@ export class PostComponent implements OnInit {
   author: Author = {};
   comments: Comments[] = [];
 
+  url: string = '';
+
   constructor(
     private route: ActivatedRoute,
     private location: Location,
@@ -28,6 +30,8 @@ export class PostComponent implements OnInit {
     if (id) {
       this.getPost(+id);
     }
+
+    this.url = window.location.href;
   }
 
   getPost(id: number): void {

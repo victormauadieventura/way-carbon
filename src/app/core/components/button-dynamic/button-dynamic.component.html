@@ -19,7 +19,7 @@
     </ng-container>
   </ng-container>
   <ng-container *ngIf="label && icon && format.name !== 'square' && format.name !== 'round'">
-    <i class="material-icons-outlined">{{ icon }}</i>{{ label }}
+    <i class="material-icons-outlined">{{ icon }}</i><span>{{ label }}</span>
   </ng-container>
   <ng-container *ngIf="icon && !label && (format.name !== 'square' && format.name !== 'round')">
     <i class="material-icons-outlined">{{ icon }}</i>

@@ -24,5 +24,8 @@
   <div class="post-text" [innerHTML]="post.content"></div>
     <app-comments
       [comments]="comments"
+      [url]="url"
+      [title]="post.title"
+      [content]="post.content"
     ></app-comments>
 </div>
