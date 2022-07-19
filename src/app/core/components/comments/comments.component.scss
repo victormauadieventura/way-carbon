@@ -1,21 +1,26 @@
 @import '../../../../stylesheets/design-system';
 
-.comments {
-  border-left: 3px solid $secondary-color;
-  padding-left: $system-padding-mid;
-  margin-top: $system-padding-mid;
-  .comment-header {
-    display: flex;
-    align-items: center;
-    h4 {
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  .comments {
+    border-left: 3px solid $secondary-color;
+    padding-left: $system-padding-mid;
+    margin-top: $system-padding-mid;
+    .comment-header {
       display: flex;
       align-items: center;
-      padding-right: $system-padding-mid;
-      font-weight: 400;
-      color: $primary-color;
-    }
-    app-button-dynamic {
-      padding-right: $system-padding-min;
+      h4 {
+        display: flex;
+        align-items: center;
+        padding-right: $system-padding-mid;
+        font-weight: 400;
+        color: $primary-color;
+      }
+      app-button-dynamic {
+        padding-right: $system-padding-min;
+      }
     }
   }
 }

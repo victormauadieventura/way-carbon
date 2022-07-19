@@ -24,7 +24,9 @@ export class CommentsComponent implements OnChanges {
   postsByAuthor: Post[] = [];
   infoAuthor: Author = {};
   tree: Comments[] = [];
-
+  
+  tc(value: any): Comments { return value as Comments; }
+  
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
   constructor(
@@ -36,6 +38,8 @@ export class CommentsComponent implements OnChanges {
     this.getAllAuthor();
     this.getAllPost();
     this.mountTree();
+    console.log(this.tree);
+    
   }
 
   ngOnDestroy(): void {
@@ -47,22 +51,22 @@ export class CommentsComponent implements OnChanges {
     this.comments.forEach((comment: Comments, index) => {
       if (!comment.respondsTo) {
         this.tree.push(comment);
-        this.tree[index].username = this.authors.find(author => author.id === this.tree[index].author)?.username
+        this.tree[index].username = this.authors.find(author => author.id === this.tree[index].author)?.username;
       } else {
         this.tree.forEach((children: Comments) => {
           if (comment.respondsTo && comment.respondsTo.id === children.id) {
-            comment.username = this.authors.find(author => author.id === comment.author)?.username
-            let c = new Set(children['children']);
-            children['children'] = [ ...c, comment ];
+            comment.username = this.authors.find(author => author.id === comment.author)?.username;
+            let c = new Set(children.children);
+            children.children = [ ...c, comment ];
           } else {
             Object.keys(children).forEach(key => {
               if (key === 'children') {
                 if (children.children) {
                   children.children.forEach((children: Comments) => {
                     if (comment.respondsTo && comment.respondsTo.id === children.id) {
-                      comment.username = this.authors.find(author => author.id === comment.author)?.username
-                      let c = new Set(children['children']);
-                      children['children'] = [ ...c, comment ];
+                      comment.username = this.authors.find(author => author.id === comment.author)?.username;
+                      let c = new Set(children.children);
+                      children.children = [ ...c, comment ];
                     }
                   });
                 }

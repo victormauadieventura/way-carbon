@@ -1,28 +1,33 @@
-
 <ng-container *ngIf="comments.length">
+  
   <h2>Comentários</h2>
-  <ng-container *ngFor="let comment of tree">
-    <div class="comments">
+
+  <ul>
+    <ng-container *ngTemplateOutlet="recursiveTree; context:{ list: tree }"></ng-container>
+  </ul>
+
+  <ng-template #recursiveTree let-tree="list">
+    <li class="comments" *ngFor="let comment of tree">
       <div class="comment-header">
         <h4>
           <app-button-dynamic
             [format]="{ name: 'text' }"
             [category]="{ name: 'primary' }"
             [size]="{ name: 'min' }"
-            [label]="comment.username"
+            [label]="tc(comment).username"
             [modalContent]="{ name: 'modalAuthor', content: modalAuthor }"
-            (buttonFunctionModal)="selectModal($event, comment.author)"
+            (buttonFunctionModal)="selectModal($event, tc(comment).author)"
           ></app-button-dynamic> 
-          {{ comment.timestamp | dateComments }}
+          {{ tc(comment).timestamp | dateComments }}
         </h4>
         <app-button-dynamic
-          [id]="'list-comments-' + comment.author"
+          [id]="'list-comments-' + tc(comment).author"
           [format]="{ name: 'text' }"
           [category]="{ name: 'primary' }"
           [size]="{ name: 'min' }"
           [icon]="'question_answer'"
           [modalContent]="{ name: 'modalComments', content: modalComments }"
-          (buttonFunctionModal)="selectModal($event, comment.author)"
+          (buttonFunctionModal)="selectModal($event, tc(comment).author)"
         ></app-button-dynamic>
         <app-button-dynamic
           [format]="{ name: 'text' }"
@@ -41,75 +46,13 @@
           (buttonFunction)="actionButtons($event)"
         ></app-button-dynamic>
       </div>
-      <p>{{ comment.content }}</p>
-      <ng-container *ngFor="let comment of comment.children">
-        <div class="comments">
-          <div class="comment-header">
-            <h4> {{ comment.username }} {{ comment.timestamp | dateComments }} </h4>
-            <app-button-dynamic
-              [id]="'list-comments-' + comment.author"
-              [format]="{ name: 'text' }"
-              [category]="{ name: 'primary' }"
-              [size]="{ name: 'min' }"
-              [icon]="'question_answer'"
-              [modalContent]="{ name: 'modalComments', content: modalComments }"
-              (buttonFunctionModal)="selectModal($event, comment.author)"
-            ></app-button-dynamic>
-            <app-button-dynamic
-              [format]="{ name: 'text' }"
-              [category]="{ name: 'primary' }"
-              [size]="{ name: 'min' }"
-              [icon]="'whatsapp'"
-              [action]="'whatsapp'"
-              (buttonFunction)="actionButtons($event)"
-            ></app-button-dynamic>
-            <app-button-dynamic
-              [format]="{ name: 'text' }"
-              [category]="{ name: 'primary' }"
-              [size]="{ name: 'min' }"
-              [icon]="'share'"
-              [action]="'facebook'"
-              (buttonFunction)="actionButtons($event)"
-            ></app-button-dynamic>
-          </div>
-          <p>{{ comment.content }}</p>
-          <ng-container *ngFor="let comment of comment.children">
-            <div class="comments">
-              <div class="comment-header">
-                <h4> {{ comment.username }} {{ comment.timestamp | dateComments }} </h4>
-                <app-button-dynamic
-                  [id]="'list-comments-' + comment.author"
-                  [format]="{ name: 'text' }"
-                  [category]="{ name: 'primary' }"
-                  [size]="{ name: 'min' }"
-                  [icon]="'question_answer'"
-                  [modalContent]="{ name: 'modalComments', content: modalComments }"
-                  (buttonFunctionModal)="selectModal($event, comment.author)"
-                ></app-button-dynamic>
-                <app-button-dynamic
-                  [format]="{ name: 'text' }"
-                  [category]="{ name: 'primary' }"
-                  [size]="{ name: 'min' }"
-                  [icon]="'whatsapp'"
-                  [action]="'whatsapp'"
-                  (buttonFunction)="actionButtons($event)"
-                ></app-button-dynamic>
-                <app-button-dynamic
-                  [format]="{ name: 'text' }"
-                  [category]="{ name: 'primary' }"
-                  [size]="{ name: 'min' }"
-                  [icon]="'share'"
-                  [action]="'facebook'"
-                  (buttonFunction)="actionButtons($event)"
-                ></app-button-dynamic>
-              </div>
-              <p>{{ comment.content }}</p>
-            </div>
-          </ng-container>
-        </div>
+      <p>{{ tc(comment).content }}</p>
+      <ng-container *ngIf="tc(comment).children && tc(comment).children!.length > 0">
+        <ng-container *ngTemplateOutlet="recursiveTree; context:{ list: tc(comment).children }"></ng-container>
       </ng-container>
-    </div>
-  </ng-container>
+    </li>
+  </ng-template>
+
 </ng-container>
 
 <ng-template #modalComments let-modal>
