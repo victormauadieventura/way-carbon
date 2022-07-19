@@ -1,10 +1,11 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Subject, takeUntil } from 'rxjs';
 import { Author } from 'src/app/shared/models/author';
 import { Comments } from 'src/app/shared/models/comments';
 import { ModalContent } from 'src/app/shared/models/modal-content';
-import { PostService } from 'src/app/shared/services/post.sevices';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from 'src/app/shared/models/post';
+import { PostService } from 'src/app/shared/services/post.sevices';
 
 @Component({
   selector: 'app-comments',
@@ -24,6 +25,8 @@ export class CommentsComponent implements OnChanges {
   infoAuthor: Author = {};
   tree: Comments[] = [];
 
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
+
   constructor(
     private modalService: NgbModal,
     private postService: PostService,
@@ -33,6 +36,11 @@ export class CommentsComponent implements OnChanges {
     this.getAllAuthor();
     this.getAllPost();
     this.mountTree();
+  }
+
+  ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   mountTree(): void {
@@ -68,6 +76,7 @@ export class CommentsComponent implements OnChanges {
 
   getAllAuthor(): void {
     this.postService.getAllAuthor()
+      .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((response: Author[]) => {
         this.authors = response;
       });
@@ -75,6 +84,7 @@ export class CommentsComponent implements OnChanges {
 
   getAllPost(): void {
     this.postService.getAllPost()
+      .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((response: Post[]) => {
         this.posts = response;
       });

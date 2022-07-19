@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { Post } from 'src/app/shared/models/post';
 import { PostsService } from 'src/app/shared/services/posts.sevices';
 
@@ -11,6 +12,8 @@ export class PostsComponent implements OnInit {
 
   posts: Post[] = [];
 
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
+
   constructor(
     private postsService: PostsService,
   ) { }
@@ -19,8 +22,14 @@ export class PostsComponent implements OnInit {
     this.getAllPosts();
   }
 
+  ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
+
   getAllPosts(): void {
     this.postsService.getAllPosts()
+      .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((response: any) => {
         this.posts = response;
         console.log(this.posts);

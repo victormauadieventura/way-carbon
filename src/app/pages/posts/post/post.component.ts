@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 import { Author } from 'src/app/shared/models/author';
+import { Comments } from 'src/app/shared/models/comments';
 import { Post } from 'src/app/shared/models/post';
 import { PostService } from 'src/app/shared/services/post.sevices';
-import { Comments } from 'src/app/shared/models/comments';
 
 @Component({
   selector: 'app-post',
@@ -18,6 +19,8 @@ export class PostComponent implements OnInit {
   comments: Comments[] = [];
 
   url: string = '';
+
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
 
   constructor(
     private route: ActivatedRoute,
@@ -34,8 +37,14 @@ export class PostComponent implements OnInit {
     this.url = window.location.href;
   }
 
+  ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
+
   getPost(id: number): void {
     this.postService.getPost(id)
+      .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((response: any) => {
         this.post = response;
         if (this.post.author) {
@@ -49,6 +58,7 @@ export class PostComponent implements OnInit {
 
   getAuthor(id: number): void {
     this.postService.getAuthor(id)
+      .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((response: any) => {
         this.author = response;
       });
@@ -56,6 +66,7 @@ export class PostComponent implements OnInit {
 
   getComment(id: number): void {
     this.postService.getComment(id)
+      .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((response: any) => {
         this.comments = response.comments;
       });
