@@ -1,5 +1,5 @@
 <ng-container *ngIf="comments.length">
-  
+
   <h2>Comentários</h2>
 
   <ul>
@@ -47,6 +47,47 @@
         ></app-button-dynamic>
       </div>
       <p>{{ tc(comment).content }}</p>
+      <div class="comment-respond">
+        <app-button-dynamic
+          *ngIf="!respond"
+          [format]="{ name: 'text' }"
+          [category]="{ name: 'secondary' }"
+          [size]="{ name: 'min' }"
+          [label]="'Responder ao comentário'"
+          [action]="'respond'"
+          (buttonFunction)="actionButtons($event, tc(comment).id)"
+        ></app-button-dynamic>
+        <ng-container *ngIf="respond && tc(comment).id === commentId">
+          <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" (keydown.enter)="$event.preventDefault()">
+            <textarea 
+              name="comment" 
+              formControlName="comment"
+            ></textarea>
+            <div class="action-buttons">
+              <app-button-dynamic
+                [id]="'cancel-button'"
+                [format]="{ name: 'text' }"
+                [category]="{ name: 'danger' }"
+                [size]="{ name: 'min' }"
+                [label]="'Cancelar'"
+                [action]="'cancel'"
+                (buttonFunction)="actionButtons($event)"
+              ></app-button-dynamic>
+              <app-button-dynamic
+                [id]="'submit-button'"
+                [type]="'submit'"
+                [format]="{ name: 'text' }"
+                [category]="{ name: formGroup.valid ? 'secondary' : 'disable'}"
+                [size]="{ name: 'min' }"
+                [label]="'Salvar'"
+                [disabled]="!formGroup.valid"
+                [action]="'save'"
+                (buttonFunction)="actionButtons($event, tc(comment).id)"
+              ></app-button-dynamic>
+            </div>
+          </form>
+        </ng-container>
+      </div>
       <ng-container *ngIf="tc(comment).children && tc(comment).children!.length > 0">
         <ng-container *ngTemplateOutlet="recursiveTree; context:{ list: tc(comment).children }"></ng-container>
       </ng-container>

@@ -1,7 +1,7 @@
 @import '../../../../stylesheets/design-system';
 
 ul {
-  margin: 0;
+  margin-bottom: $system-padding-max;
   padding: 0;
   list-style: none;
   .comments {
@@ -20,6 +20,24 @@ ul {
       }
       app-button-dynamic {
         padding-right: $system-padding-min;
+      }
+    }
+    .comment-respond {
+      app-button-dynamic {
+        display: grid;
+        justify-content: end;
+      }
+      textarea {
+        width: 100%;
+        max-height: 100px;
+      }
+      .action-buttons {
+        display: flex;
+        justify-content: end;
+        margin: 20px 0;
+        app-button-dynamic {
+          margin-left: 16px;
+        }
       }
     }
   }

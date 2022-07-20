@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Comments } from '../models/comments';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,12 @@ export class PostService {
 
   getComment(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiPathComment}/${id}`).pipe(
+      map(response =>  response)
+    );
+  }
+
+  createComment(comment: Comments, id: number): Observable<any> {
+    return this.http.put<any>(`${this.apiPathComment}/${id}`, comment).pipe(
       map(response => response)
     );
   }
