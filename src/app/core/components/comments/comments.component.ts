@@ -72,21 +72,27 @@ export class CommentsComponent implements OnChanges {
               return children.children?.indexOf(c) === i;
             });
           } else {
-            Object.keys(children).forEach(key => {
-              if (key === 'children') {
-                if (children.children) {
-                  children.children.forEach((children: Comments) => {
-                    if (comment.respondsTo && comment.respondsTo.id === children.id) {
-                      comment.username = this.authors.find(author => author.id === comment.author)?.username;
-                      let c = new Set(children.children);
-                      children.children = [ ...c, comment ];
-                    }
-                  });
-                }
-              }
-            });
+            this.mountTreeChildren(children, comment);
           }
         });
+      }
+    });
+  }
+
+  mountTreeChildren(children: Comments, comment: Comments): void {
+    Object.keys(children).forEach(key => {
+      if (key === 'children') {
+        if (children.children) {
+          children.children.forEach((children: Comments) => {
+            if (comment.respondsTo && comment.respondsTo.id === children.id) {
+              comment.username = this.authors.find(author => author.id === comment.author)?.username;
+              let c = new Set(children.children);
+              children.children = [ ...c, comment ];
+            } else {
+              this.mountTreeChildren(children, comment)
+            }
+          });
+        }
       }
     });
   }
